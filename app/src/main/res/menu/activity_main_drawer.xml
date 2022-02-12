@@ -20,6 +20,16 @@
             android:id="@+id/nav_instruktur"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Instruktur" />
+        <item
+            android:id="@+id/nav_kelas"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Kelas" />
+        <item
+            android:id="@+id/nav_detail_kelas"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Detail Kelas" />
+
+
 
     </group>
 </menu>

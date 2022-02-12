@@ -28,6 +28,7 @@ public class TambahPesertaActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_peserta);
+        getSupportActionBar().setTitle("Tambah Peserta");
 
         btn_add_data_pst = findViewById(R.id.btn_add_data_pst);
         btn_lihat_pst = findViewById(R.id.btn_lihat_pst);
@@ -43,8 +44,10 @@ public class TambahPesertaActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         if (view == btn_lihat_pst){
-            Intent intent =new Intent(TambahPesertaActivity.this, PesertaFragment.class);
-            startActivity(intent);
+            System.exit(1);
+//            Intent intent =new Intent(TambahPesertaActivity.this, PesertaFragment.class);
+//            startActivity(intent);
+
         }else if (view == btn_add_data_pst){
             confirmAddPeserta();
         }
@@ -111,18 +114,20 @@ public class TambahPesertaActivity extends AppCompatActivity implements View.OnC
                 loading.dismiss();
                 Toast.makeText(TambahPesertaActivity.this,
                         "pesan :" +message, Toast.LENGTH_SHORT).show();
-                Intent myIntent = new Intent(TambahPesertaActivity.this, MainActivity.class);
-                startActivity(myIntent);
+                clearText();
+                System.exit(1);
+//                Intent myIntent = new Intent(TambahPesertaActivity.this, MainActivity.class);
+//                startActivity(myIntent);
             }
         }
         SimpanDataPeserta simpanDataPeserta =new SimpanDataPeserta();
         simpanDataPeserta.execute();
     }
-//    private void clearText() {
-//        form_nama_pst.setText("");
-//        form_email_pst.setText("");
-//        form_hp_pst.setText("");
-//        form_instansi_pst.setText("");
-//        form_nama_pst.requestFocus();
-//    }
+    private void clearText() {
+        form_nama_pst.setText("");
+        form_email_pst.setText("");
+        form_hp_pst.setText("");
+        form_instansi_pst.setText("");
+        form_nama_pst.requestFocus();
+    }
 }

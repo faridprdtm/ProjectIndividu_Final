@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ProjectIndividu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.instruktur.LihatDataInstrukturActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.instruktur.TambahInstrukturActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.materi.LihatDetailMateriActivity"
             android:exported="false" />
         <activity

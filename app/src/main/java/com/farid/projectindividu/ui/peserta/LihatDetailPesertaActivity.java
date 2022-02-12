@@ -168,7 +168,8 @@ public class LihatDetailPesertaActivity extends AppCompatActivity implements Vie
                 loading.dismiss();
                 Toast.makeText(LihatDetailPesertaActivity.this, "pesan :" +message,
                         Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LihatDetailPesertaActivity.this, MainActivity.class));
+                System.exit(1);
+//                startActivity(new Intent(LihatDetailPesertaActivity.this, MainActivity.class));
             }
         }
         Delete delete = new Delete();
@@ -212,8 +213,9 @@ public class LihatDetailPesertaActivity extends AppCompatActivity implements Vie
                 loading.dismiss();
                 Toast.makeText(LihatDetailPesertaActivity.this,
                         "pesan :" +message , Toast.LENGTH_SHORT).show();
+                System.exit(1);
                 //redirect ke LihatDataActivity
-                startActivity(new Intent(LihatDetailPesertaActivity.this, MainActivity.class));
+//                startActivity(new Intent(LihatDetailPesertaActivity.this, MainActivity.class));
             }
         }
         UpdateDataPeserta updateDataPeserta = new UpdateDataPeserta();
