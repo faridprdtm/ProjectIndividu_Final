@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -32,16 +31,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 
 public class LihatDetailKelasActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText edit_id_kls,edit_tgl_mulai, edit_tgl_akhir; //, edit_id_ins_kls, edit_id_mat_kls;
-    String id_kls,public_nama_ins, public_nama_mat,spinner_value_ins,
-            spinner_value_mat,
+    EditText edit_id_kls,edit_tgl_mulai_kls, edit_tgl_akhir_kls;
+
+    String id_kls,public_nama_ins, public_nama_mat,
+            spinner_value_ins,spinner_value_mat,
             JSON_STRING_INS, JSON_STRING_MAT;
     Button btn_update_kls,btn_delete_kls,btn_datepicker_mulai_edit,btn_datepicker_akhir_edit;
-//    private ActivityMainBinding binding;
+
     private DatePickerDialog datePickerDialog;
     private Spinner spinner_ins_kls_edit, spinner_mat_kls_edit;
 
@@ -49,16 +48,17 @@ public class LihatDetailKelasActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lihat_detail_kelas);
+        getSupportActionBar().setTitle("Detail Kelas");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        edit_id_kls = findViewById(R.id.edit_id_kls);
-        edit_tgl_mulai = findViewById(R.id.edit_tgl_mulai);
-        edit_tgl_akhir = findViewById(R.id.edit_tgl_akhir);
-//        edit_id_ins_kls = findViewById(R.id.edit_id_ins_kls);
-//        edit_id_mat_kls = findViewById(R.id.edit_id_mat_kls);
+        edit_id_kls = findViewById(R.id.edit_id_kls_mtr);
+        edit_tgl_mulai_kls = findViewById(R.id.edit_tgl_mulai_kls);
+        edit_tgl_akhir_kls = findViewById(R.id.edit_tgl_akhir_kls);
+
         btn_update_kls = findViewById(R.id.btn_update_kls);
         btn_delete_kls = findViewById(R.id.btn_delete_kls);
-        btn_datepicker_mulai_edit = findViewById(R.id.btn_datepicker_mulai_edit);
-        btn_datepicker_akhir_edit  = findViewById(R.id.btn_datepicker_akhir_edit);
+//        btn_datepicker_mulai_edit = findViewById(R.id.btn_datepicker_mulai_edit);
+//        btn_datepicker_akhir_edit  = findViewById(R.id.btn_datepicker_akhir_edit);
         spinner_ins_kls_edit = findViewById(R.id.spinner_ins_kls_edit);
         spinner_mat_kls_edit = findViewById(R.id.spinner_mat_kls_edit);
 
@@ -68,19 +68,19 @@ public class LihatDetailKelasActivity extends AppCompatActivity implements View.
 
         getJSON();
 
-        btn_datepicker_mulai_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDateDialogeTanggalMulai();
-            }
-        });
-
-        btn_datepicker_akhir_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDateDialogeTanggalAkhir();
-            }
-        });
+//        btn_datepicker_mulai_edit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDateDialogeTanggalMulai();
+//            }
+//        });
+//
+//        btn_datepicker_akhir_edit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDateDialogeTanggalAkhir();
+//            }
+//        });
 
         btn_update_kls.setOnClickListener(this);
         btn_delete_kls.setOnClickListener(this);
@@ -89,59 +89,46 @@ public class LihatDetailKelasActivity extends AppCompatActivity implements View.
         getDataMateri();
     }
 
-    private void showDateDialogeTanggalAkhir() {
-        Calendar newCalendar = Calendar.getInstance();
-
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-
-                //txt_date.setText("Tanggal dipilih : "+dateFormatter.format(newDate.getTime()).toString());
-                edit_tgl_akhir.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
-            }
-
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-
-
-        datePickerDialog.show();
-    }
-
-    private void showDateDialogeTanggalMulai() {
-        Calendar newCalendar = Calendar.getInstance();
-//        DateFormat formatter = new SimpleDateFormat("dd-MMM-yy");
-//        Calendar cal = Calendar.getInstance();
-//        Date date = null;
-//        try {
-//            date = formatter.parse(edit_tgl_mulai.toString());
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        cal.setTime(date);
-//        int year = cal.get(Calendar.YEAR);
-//        int month = cal.get(Calendar.MONTH);
-//        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-
-                //txt_date.setText("Tanggal dipilih : "+dateFormatter.format(newDate.getTime()).toString());
-                edit_tgl_mulai.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
-            }
-
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-
-
-        datePickerDialog.show();
-    }
+//    private void showDateDialogeTanggalAkhir() {
+//        Calendar newCalendar = Calendar.getInstance();
+//
+//        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+//
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//
+//                Calendar newDate = Calendar.getInstance();
+//                newDate.set(year, monthOfYear, dayOfMonth);
+//
+//                //txt_date.setText("Tanggal dipilih : "+dateFormatter.format(newDate.getTime()).toString());
+//                edit_tgl_akhir.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+//            }
+//
+//        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+//
+//
+//        datePickerDialog.show();
+//    }
+//
+//    private void showDateDialogeTanggalMulai() {
+//        Calendar newCalendar = Calendar.getInstance();
+//        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+//
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//
+//                Calendar newDate = Calendar.getInstance();
+//                newDate.set(year, monthOfYear, dayOfMonth);
+//
+//                //txt_date.setText("Tanggal dipilih : "+dateFormatter.format(newDate.getTime()).toString());
+//                edit_tgl_mulai.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+//            }
+//
+//        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+//
+//
+//        datePickerDialog.show();
+//    }
 
     private void getDataMateri() {
         //bantuan dari class AsyncTask
@@ -328,6 +315,9 @@ public class LihatDetailKelasActivity extends AppCompatActivity implements View.
                 super.onPostExecute(message);
                 loading.dismiss();
                 displayDetailData(message);
+                Toast.makeText(LihatDetailKelasActivity.this, "Data " + message,
+                 Toast.LENGTH_SHORT).show();
+
             }
         }
         GetJSON getJSON = new GetJSON();
@@ -340,13 +330,13 @@ public class LihatDetailKelasActivity extends AppCompatActivity implements View.
             JSONArray result = jsonObject.getJSONArray(KonfigurasiKelas.TAG_JSON_ARRAY);
             JSONObject object = result.getJSONObject(0);
 
-            String tgl_mulai = object.getString(KonfigurasiKelas.TAG_JSON_TGL_MULAI);
-            String tgl_akhir = object.getString(KonfigurasiKelas.TAG_JSON_TGL_AKHIR);
+            String tgl_mulai_kls = object.getString(KonfigurasiKelas.TAG_JSON_TGL_MULAI);
+            String tgl_akhir_kls = object.getString(KonfigurasiKelas.TAG_JSON_TGL_AKHIR);
             String id_ins_kls = object.getString(KonfigurasiKelas.TAG_JSON_ID_INS);
             String id_mat_kls = object.getString(KonfigurasiKelas.TAG_JSON_ID_MAT);
 
-            edit_tgl_mulai.setText(tgl_mulai);
-            edit_tgl_akhir.setText(tgl_akhir);
+            edit_tgl_mulai_kls.setText(tgl_mulai_kls);
+            edit_tgl_akhir_kls.setText(tgl_akhir_kls);
             public_nama_mat = id_mat_kls;
             public_nama_ins = id_ins_kls;
 
@@ -424,8 +414,8 @@ public class LihatDetailKelasActivity extends AppCompatActivity implements View.
 
     private void updateDataKelas() {
         // variable data pegawai yang akan diubah
-        final String tgl_mulai = edit_tgl_mulai.getText().toString().trim();
-        final String tgl_akhir = edit_tgl_akhir.getText().toString().trim();
+        final String tgl_mulai = edit_tgl_mulai_kls.getText().toString().trim();
+        final String tgl_akhir = edit_tgl_akhir_kls.getText().toString().trim();
         final String id_ins_kls = spinner_value_ins;
         final String id_mat_kls = spinner_value_mat;
 

@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectIndividu"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".SearchPesertaActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.detailkelas.TambahDataDetailKelasActivity"
             android:exported="false" />
@@ -46,12 +48,13 @@
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/Theme.ProjectIndividu.NoActionBar">>
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.ProjectIndividu.NoActionBar">
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

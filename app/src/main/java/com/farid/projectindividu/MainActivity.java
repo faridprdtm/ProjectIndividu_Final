@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_settings:
-                Toast.makeText(this, "Menu is selected.", Toast.LENGTH_LONG).show();
-//                startActivity(new Intent(MainActivity.this, LihatDataDetailKelasActivity.class));
+//                Toast.makeText(this, "Menu is selected.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, SearchPesertaActivity.class));
                 return true;
             default:
             return super.onOptionsItemSelected(item);
