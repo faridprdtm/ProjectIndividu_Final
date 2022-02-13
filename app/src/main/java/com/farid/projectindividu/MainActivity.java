@@ -71,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(this, "Menu is selected.", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(MainActivity.this, SearchPesertaActivity.class));
                 return true;
+            case R.id.cari_instruktur:
+//                Toast.makeText(this, "Menu is selected.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, SearchInstrukturActivity.class));
+                return true;
             default:
             return super.onOptionsItemSelected(item);
         }

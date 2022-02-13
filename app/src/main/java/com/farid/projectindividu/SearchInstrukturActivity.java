@@ -13,33 +13,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.farid.projectindividu.ui.instruktur.KonfigurasiInstruktur;
 import com.farid.projectindividu.ui.peserta.Konfigurasi;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class SearchPesertaActivity extends AppCompatActivity {
-    Button btn_search_pst;
-    EditText search_id_pst;
-    TextView txt_cari_id_pst, txt_cari_nama_pst, txt_cari_email_pst,
-             txt_cari_hp_pst,txt_cari_ins_pst;
-    String cari_value;
-
+public class SearchInstrukturActivity extends AppCompatActivity {
+    Button btn_search_ins;
+    EditText search_id_ins;
+    TextView txt_cari_id_ins, txt_cari_nama_ins, txt_cari_email_ins,
+            txt_cari_hp_ins;
+    String cari_value_ins;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_peserta);
-        getSupportActionBar().setTitle("Search Peserta");
+        setContentView(R.layout.activity_search_instruktur);
+        getSupportActionBar().setTitle("Search Instruktur");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        btn_search_pst = findViewById(R.id.btn_search_pst);
-        search_id_pst = findViewById(R.id.search_id_pst);
-        txt_cari_id_pst = findViewById(R.id.txt_cari_id_pst);
-        txt_cari_nama_pst = findViewById(R.id.txt_cari_nama_pst);
-        txt_cari_email_pst = findViewById(R.id.txt_cari_email_pst);
-        txt_cari_hp_pst = findViewById(R.id.txt_cari_hp_pst);
-        txt_cari_ins_pst = findViewById(R.id.txt_cari_ins_pst);
+        btn_search_ins = findViewById(R.id.btn_search_ins);
+        search_id_ins = findViewById(R.id.search_id_ins);
+        txt_cari_id_ins = findViewById(R.id.txt_cari_id_ins);
+        txt_cari_nama_ins = findViewById(R.id.txt_cari_nama_ins);
+        txt_cari_email_ins = findViewById(R.id.txt_cari_email_ins);
+        txt_cari_hp_ins = findViewById(R.id.txt_cari_hp_ins);
 
-        btn_search_pst.setOnClickListener(new View.OnClickListener() {
+
+        btn_search_ins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cariDataPeserta();
@@ -49,8 +49,8 @@ public class SearchPesertaActivity extends AppCompatActivity {
     }
 
     private void cariDataPeserta() {
-        cari_value= search_id_pst.getText().toString();
-        if (cari_value.equals("")){
+        cari_value_ins= search_id_ins.getText().toString();
+        if (cari_value_ins.equals("")){
             alertMessage();
         }else {
             getData();
@@ -78,7 +78,7 @@ public class SearchPesertaActivity extends AppCompatActivity {
             @Override
             protected void onPreExecute() { // sebelum proses
                 super.onPreExecute();
-                loading = ProgressDialog.show(SearchPesertaActivity.this,
+                loading = ProgressDialog.show(SearchInstrukturActivity.this,
                         "Mengambil Data", "Harap Menunggu...",
                         false, false);
             }
@@ -86,7 +86,7 @@ public class SearchPesertaActivity extends AppCompatActivity {
             @Override
             protected String doInBackground(Void... voids) { // saat proses
                 HttpHandler handler = new HttpHandler();
-                String result = handler.sendGetResponse(Konfigurasi.URL_GET_DETAIL_PST, cari_value);
+                String result = handler.sendGetResponse(KonfigurasiInstruktur.URL_GET_DETAIL, cari_value_ins);
                 return result;
             }
 
@@ -98,11 +98,11 @@ public class SearchPesertaActivity extends AppCompatActivity {
                 if (message.contains("error")) {
 //                    Toast.makeText(CariInstrukturActivity.this, "hasil: " + message, Toast.LENGTH_LONG).show();
                     alertMessage();
-                    txt_cari_id_pst.setText("");
-                    txt_cari_nama_pst.setText("");
-                    txt_cari_email_pst.setText("");
-                    txt_cari_hp_pst.setText("");
-                    txt_cari_ins_pst.setText("");
+                    txt_cari_id_ins.setText("");
+                    txt_cari_nama_ins.setText("");
+                    txt_cari_email_ins.setText("");
+                    txt_cari_hp_ins.setText("");
+
                 } else {
                     setDetailData(message);
                 }
@@ -115,20 +115,20 @@ public class SearchPesertaActivity extends AppCompatActivity {
     private void setDetailData(String message) {
         try {
             JSONObject jsonObject = new JSONObject(message);
-            JSONArray result = jsonObject.getJSONArray(Konfigurasi.TAG_JSON_ARRAY);
+            JSONArray result = jsonObject.getJSONArray(KonfigurasiInstruktur.TAG_JSON_ARRAY);
             JSONObject object = result.getJSONObject(0);
 
-            String id_cek_ins = object.getString(Konfigurasi.TAG_JSON_ID_PST);
-            String nama_pst = object.getString(Konfigurasi.TAG_JSON_NAMA_PST);
-            String email_pst = object.getString(Konfigurasi.TAG_JSON_EMAIL_PST);
-            String hp_pst = object.getString(Konfigurasi.TAG_JSON_HP_PST);
-            String ins_pst = object.getString(Konfigurasi.TAG_JSON_INSTANSI_PST);
+            String id_cek_ins = object.getString(KonfigurasiInstruktur.TAG_JSON_ID);
+            String nama_ins = object.getString(KonfigurasiInstruktur.TAG_JSON_NAMA);
+            String email_ins = object.getString(KonfigurasiInstruktur.TAG_JSON_EMAIL);
+            String hp_ins = object.getString(KonfigurasiInstruktur.TAG_JSON_HP);
 
-            txt_cari_id_pst.setText("ID: " + cari_value);
-            txt_cari_nama_pst.setText("Nama: " + nama_pst);
-            txt_cari_email_pst.setText("Email: " + email_pst);
-            txt_cari_hp_pst.setText("No Telp: " + hp_pst);
-            txt_cari_ins_pst.setText("Instansi: " + ins_pst);
+
+            txt_cari_id_ins.setText("ID: " + cari_value_ins);
+            txt_cari_nama_ins.setText("Nama: " + nama_ins);
+            txt_cari_email_ins.setText("Email: " + email_ins);
+            txt_cari_hp_ins.setText("No Telp: " + hp_ins);
+
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -6,4 +6,9 @@
         android:orderInCategory="100"
         android:title="Cari Peserta"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/cari_instruktur"
+        android:orderInCategory="100"
+        android:title="Cari Instruktur"
+        app:showAsAction="never" />
 </menu>

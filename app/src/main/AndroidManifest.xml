@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProjectIndividu"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SearchInstrukturActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchPesertaActivity"
             android:exported="false" />
         <activity
