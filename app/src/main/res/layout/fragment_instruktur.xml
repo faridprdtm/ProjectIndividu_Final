@@ -5,26 +5,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.instruktur.InstrukturFragment" >
-<ScrollView
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_weight="1"
-android:fillViewport="true">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:orientation="vertical">
-
-    <ListView
-        android:id="@+id/list_view_ins"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-</LinearLayout>
-</ScrollView>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-<LinearLayout
+        <ListView
+            android:id="@+id/list_view_ins"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+    </LinearLayout>
+
+    <LinearLayout
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:layout_weight="0"

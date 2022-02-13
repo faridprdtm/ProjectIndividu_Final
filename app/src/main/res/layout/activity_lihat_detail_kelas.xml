@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.kelas.LihatDetailKelasActivity">
+
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Id:" />
+
+  <EditText
+      android:id="@+id/edit_id_kls"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:enabled="false"
+      android:ems="10"
+      android:inputType="textPersonName" />
+
+  <TextView
+      android:id="@+id/textView2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Tanggal Mulai: " />
+
+  <Button
+      android:id="@+id/btn_datepicker_mulai_edit"
+      android:text="Tanggal Mulai"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+
+  <EditText
+      android:id="@+id/edit_tgl_mulai"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:enabled="false"
+      android:inputType="textPersonName" />
+
+  <TextView
+      android:id="@+id/textView3"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Tanggal Akhir: " />
+
+  <Button
+      android:id="@+id/btn_datepicker_akhir_edit"
+      android:text="Tanggal Akhir"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+
+  <EditText
+      android:id="@+id/edit_tgl_akhir"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:enabled="false"
+      android:inputType="textPersonName" />
+
+  <TextView
+      android:id="@+id/textView4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="ID Instruktur:" />
+
+  <Spinner
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/spinner_ins_kls_edit"
+      android:padding="15dp" />
+  <TextView
+      android:id="@+id/textView5"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="ID Materi:" />
+
+  <Spinner
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/spinner_mat_kls_edit"
+      android:padding="15dp" />
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="bottom"
+      android:orientation="horizontal"
+      android:padding="12dp">
+
+    <Button
+        android:id="@+id/btn_update_kls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dp"
+        android:layout_weight="1"
+        android:text="Update Kelas" />
+
+    <Button
+        android:id="@+id/btn_delete_kls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_weight="1"
+        android:text="Delete Kelas" />
+  </LinearLayout>
+
+</LinearLayout>

@@ -12,6 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectIndividu"
         android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".ui.detailkelas.TambahDataDetailKelasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detailkelas.LihatDataDetailKelasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.kelas.LihatDetailKelasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.kelas.TambahKelasActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.instruktur.LihatDataInstrukturActivity"
             android:exported="false" />
@@ -31,6 +44,16 @@
             android:name=".ui.peserta.LihatDetailPesertaActivity"
             android:exported="false" />
         <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ProjectIndividu.NoActionBar">>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
@@ -38,7 +61,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

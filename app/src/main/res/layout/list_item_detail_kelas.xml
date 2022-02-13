@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dp">
+
+
+    <TextView
+        android:id="@+id/txt_id_detail"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="ID"
+        android:textAlignment="center"
+        android:textColor="#270303"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/txt_nama_kls_detail"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:text="Instruktur"
+        android:textAlignment="textStart"
+        android:textColor="#270303"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/txt_nama_peserta_detail"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:text="Materi"
+        android:textAlignment="textStart"
+        android:textColor="#270303"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
