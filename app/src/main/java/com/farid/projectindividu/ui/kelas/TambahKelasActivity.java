@@ -202,7 +202,7 @@ public class TambahKelasActivity extends AppCompatActivity implements View.OnCli
             jsonObject = new JSONObject(JSON_STRING_INS);
             JSONArray result = jsonObject.getJSONArray(KonfigurasiMateri.TAG_JSON_ARRAY);
             Log.d("DATA JSON: ", JSON_STRING_INS);
-            Toast.makeText(TambahKelasActivity.this, "DATA JSON Result: " + result, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(TambahKelasActivity.this, "DATA JSON Result: " + result, Toast.LENGTH_SHORT).show();
 
             for (int i = 0; i < result.length(); i++) {
                 JSONObject object = result.getJSONObject(i);

@@ -210,7 +210,7 @@ public class LihatDataDetailKelasActivity extends AppCompatActivity implements V
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     spinner_value = Integer.parseInt(listId.get(i));
-                    Toast.makeText(LihatDataDetailKelasActivity.this, "True Value: " + spinner_value, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LihatDataDetailKelasActivity.this, "True Value: " + spinner_value, Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
